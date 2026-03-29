@@ -10,6 +10,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse
 import os
 from pathlib import Path
+import copy
 
 app = FastAPI(title="Mergington High School API",
               description="API for viewing and signing up for extracurricular activities")
@@ -76,6 +77,9 @@ activities = {
         "participants": ["zoe@mergington.edu", "ethan@mergington.edu"]
     }
 }
+
+# Store original activities data for test resets
+ORIGINAL_ACTIVITIES = copy.deepcopy(activities)
 
 
 @app.get("/")
